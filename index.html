@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>Contact Card - Coding Dojo Assignment</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $(document).on('click','button', function(){
+                    var name = $('#firstName').val() + " " + $('#lastName').val();
+                    var description = $('#description').val();
+                    $('#result').append('<div class="cards"><h1>' + name + '</h1><p>Click here for description</p><p class="desc">' + description + '</p></div>');
+                    $('input').val('');
+                    $('textarea').val('');
+                })
+                $(document).on('click','.cards', function(){
+                    $(this).children().toggle();
+                })
+            })
+        </script>
+        <style>
+            * {
+                width: 970px;
+            }
+            #form, #result {
+                width: 450px;
+                display: inline-block;
+                vertical-align: top;
+            }
+           
+            .name, label {
+                width: 150px;
+                display: inline-block;
+            }
+            #description {
+                width: 300px;
+                height: 150px;
+                display: block;
+            }
+            .desc {
+                display: none;
+            }
+            button {
+                width: 150px;
+                height: 40px;
+                background-color: gray;
+                color: white;
+                box-shadow: 5px 2px black;
+            }
+            .cards {
+                width: 400px;
+                height: 150px;
+                border: 2px solid black;
+                padding-left: 60px;
+                margin-bottom: 20px;
+            }
+            #container > h1 {
+                text-align: center;
+            }
+            input, label, textarea, button, p {
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1>Contact Card - Coding Dojo Assignment</h1>
+            <div id="form">
+                <label>First Name:</label> <input type="text" id="firstName" name="firstName" class="name"><p></p>
+                <label>Last Name:</label> <input type="text" id="lastName" name="lastName" class="name"><p></p>
+                <label>Description:</label><p></p> <textarea id="description" placeholder="Enter description"></textarea><p></p>
+                <button>Add User</button>
+            </div>
+            <div id="result">
+            </div>
+        </div>
+    </body>
+</html>
